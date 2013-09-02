@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #F5F5F5;
+    color: #666666;
+}
+
+#content {
+    width: 520px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#content h1 {
+    font-size: 24px;
+}
+
+#content form {
+    position: relative;
+    background-color: #FFFFFF;
+    padding: 10px 90px 10px 10px;
+}
+
+#content form input[type="text"] {
+    width: 100%;
+    height: 25px;
+    border: 1px solid #bdc7d8;
+    padding-left: 4px;
+}
+
+#content form input[type="submit"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 27px;
+    width: 60px;
+    margin: 10px 10px 0 0;
+    border: 0;
+    background: #4169e1;
+    color: #FFFFFF;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#content form input[type="submit"]:disabled {
+    background: #666666;
+}
+
+#todoList {
+    margin-top: 10px;
+}
+
+#todoList span.archive {
+    float: right;
+    margin-right: 5px;
+}
+
+#todoList .doneItem span.summary {
+    text-decoration: line-through;
+}
+
+#todoList ul {
+    list-style: none;
+}
+
+#todoList .todoItem {
+    position: relative;
+    padding: 10px 60px 10px 10px;
+    background-color: #FFFFFF;
+    border-left: inset 4px #4169e1;
+    margin-bottom: 8px;
+}
+
+#todoList .todoItem span.delete {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+
+.redLink {
+    font-size: 12px;
+    text-decoration: underline;
+    color: #A71500;
+    cursor: pointer;
+}
