@@ -17,3 +17,7 @@
 ## Run Test
 
   py.test tests
+
+## Create Bundle
+
+  pip bundle -r packages.txt todo.pybundle
