@@ -1,14 +1,19 @@
-= Echelon Ignite 2013 Thailand
+# Echelon Ignite 2013 Thailand SCM Workshop Sample App
 
-== Prerequistes
+## Prerequistes
 
 * bottle
 * sqlite3
+* pytest
 
-== Setup
+## Setup
 
   sqlite3 todo.db < etc/schema.sql
 
-== Run
+## Run App
 
   ./app.py
+
+## Run Test
+
+  py.test tests
