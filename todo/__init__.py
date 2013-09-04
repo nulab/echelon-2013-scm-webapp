@@ -5,9 +5,11 @@ from bottle import route, template, static_file, view, post, request, install
 
 from bottle_sqlite import SQLitePlugin
 
-import json
+import json, os
 
 install(SQLitePlugin(dbfile='todo.db'))
+
+app_root='.'
 
 @route('/todo')
 @view('todo')
@@ -27,7 +29,7 @@ def save(db):
 
 @route('/static/<filepath:path>')
 def server_static(filepath):
-    return static_file(filepath, root='./static')
+    return static_file(filepath, root=os.path.join(app_root,'static'))
 
 class Todos(object):
 
