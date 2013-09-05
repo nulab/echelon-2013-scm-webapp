@@ -1,25 +1,32 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from bottle import route, template, static_file, view, post, request, install
+from bottle import route, static_file, view, post, request, install
 
 from bottle_sqlite import SQLitePlugin
 
-import json, os
+import json
+import os
 
-install(SQLitePlugin(dbfile='todo.db'))
+app_root = '.'
 
-app_root='.'
+
+def install_db():
+    dbfile = os.path.join(app_root, 'todo.db')
+    install(SQLitePlugin(dbfile=dbfile))
+
 
 @route('/todo')
 @view('todo')
 def todo():
     return dict()
 
+
 @route('/todo/list')
 def list(db):
     todos = Todos(db).findAll()
     return {'todos': todos}
+
 
 @post('/todo/save')
 def save(db):
@@ -27,9 +34,11 @@ def save(db):
     Todos(db).insertAll(todos)
     return {'msg': 'ok'}
 
+
 @route('/static/<filepath:path>')
 def server_static(filepath):
-    return static_file(filepath, root=os.path.join(app_root,'static'))
+    return static_file(filepath, root=os.path.join(app_root, 'static'))
+
 
 class Todos(object):
 
@@ -39,11 +48,11 @@ class Todos(object):
     def findAll(self):
         c = self.db.execute('SELECT summary, done FROM todos')
         todos = []
-        for row in c.fetchall() :
-            todos.append({'summary':row[0],'done':row[1]})
+        for row in c.fetchall():
+            todos.append({'summary': row[0], 'done': row[1]})
         return todos
 
     def insertAll(self, todos):
         self.db.execute('DELETE FROM todos')
-        for todo in todos :
+        for todo in todos:
             self.db.execute('INSERT INTO todos (summary, done) VALUES (?, ?)', (todo['summary'], todo['done']))
